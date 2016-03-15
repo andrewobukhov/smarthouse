@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<link href="~/Content/angular-chart.css" rel="stylesheet" />
+
+
+<div>
+    <div ng-app="app" class="row">
+
+        <div ng-controller="tempController">
+            <div>
+                <div>
+                    <label>Temp: {{lastTemp.Value}}</label>
+                </div>
+                <div>
+                    <label>Date: {{lastTemp.Date.toLocaleTimeString()}}</label>
+                </div>
+            </div>
+
+            <div>
+                <canvas id="line" class="chart chart-line" chart-data="data" chart-options="options"
+                        chart-labels="labels" chart-legend="true" chart-series="series"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
