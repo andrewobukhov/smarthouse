@@ -27,6 +27,16 @@ namespace SmartHouseWeb.Controllers
             return dtos;
         }
 
+        public IEnumerable<SensorStateDto> GetAllStates()
+        {
+            var list = new List<SensorStateDto>();
+            foreach(var item in Context.SensorStates.Include("Sensor"))
+            {
+                list.Add(new SensorStateDto(item));
+            }
+            return list.AsEnumerable();
+        }
+
         public SensorStateDto GetState(int index)
         {
             var state = Context.SensorStates.FirstOrDefault(x => x.Sensor.SensorIndex == (SensorIndex)index);

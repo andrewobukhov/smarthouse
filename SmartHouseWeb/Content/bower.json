@@ -1,0 +1,25 @@
+{
+  "name": "Smart House Web",
+  "homepage": "https://github.com/andrewobukhov/smarthouse",
+  "authors": [
+    "andrewobukhov <andrewobukhov@gmail.com>"
+  ],
+  "description": "Smart House Web",
+  "keywords": [
+    "AngularJS"
+  ],
+  "license": "Apache 2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^0.2.18",
+    "bootstrap": "^3.3.6",
+    "angular-chart": "^0.4.0"
+  }
+}

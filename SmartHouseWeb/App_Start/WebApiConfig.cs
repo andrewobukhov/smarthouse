@@ -15,6 +15,12 @@ namespace SmartHouseWeb
             );
 
             config.Routes.MapHttpRoute(
+                name: "SensorStates",
+                routeTemplate: "api/sensor/states",
+                defaults: new { controller = "Sensor", action = "GetAllStates" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "SensorLastValue",
                 routeTemplate: "api/sensor/{index}",
                 defaults: new { controller = "Sensor", action = "GetState" }
