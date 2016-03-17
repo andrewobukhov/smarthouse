@@ -24,17 +24,13 @@ namespace SmartHouseWeb.Controllers
 
         public IEnumerable<SocketStateDto> GetAllStates()
         {
-            var list = new List<SocketStateDto>();
-            foreach (var item in Context.SocketStates)
+            var list = Context.SocketStates.Select(item => new SocketStateDto()
             {
-                list.Add(new SocketStateDto()
-                {
-                    Name = "Розетка",
-                    IsTurnOn = item.IsTurnOn,
-                    Index = (int)item.SocketIndex
-                });
-            }
-            return list.AsEnumerable();
+                Name = "Розетка",
+                IsTurnOn = item.IsTurnOn,
+                Index = (int) item.SocketIndex
+            });
+            return list;
         }
 
         [System.Web.Http.HttpGet]
