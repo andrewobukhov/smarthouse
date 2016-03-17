@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Web.Http;
 using SmartHouseWeb.DataView;
 using SmartHouseWeb.Models;
+using System.Collections.Generic;
 
 namespace SmartHouseWeb.Controllers
 {
@@ -11,14 +12,29 @@ namespace SmartHouseWeb.Controllers
     {
         public SocketStateDto GetState(int index)
         {
-            var state = Context.SocketStates.FirstOrDefault(x => x.SocketIndex == (SocketIndex) index);
+            var state = Context.SocketStates.FirstOrDefault(x => x.SocketIndex == (SocketIndex)index);
 
             if (state != null)
             {
-                return new SocketStateDto {IsTurnOn = state.IsTurnOn};
+                return new SocketStateDto { IsTurnOn = state.IsTurnOn };
             }
 
             throw new HttpResponseException(HttpStatusCode.NotFound);
+        }
+
+        public IEnumerable<SocketStateDto> GetAllStates()
+        {
+            var list = new List<SocketStateDto>();
+            foreach (var item in Context.SocketStates)
+            {
+                list.Add(new SocketStateDto()
+                {
+                    Name = "Розетка",
+                    IsTurnOn = item.IsTurnOn,
+                    Index = (int)item.SocketIndex
+                });
+            }
+            return list.AsEnumerable();
         }
 
         [System.Web.Http.HttpGet]
@@ -28,13 +44,13 @@ namespace SmartHouseWeb.Controllers
 
             if (state == null)
             {
-                Context.SocketStates.Add(new SocketState {SocketIndex = (SocketIndex) index, IsTurnOn = isTurnOn });
+                Context.SocketStates.Add(new SocketState { SocketIndex = (SocketIndex)index, IsTurnOn = isTurnOn });
             }
             else
             {
                 state.IsTurnOn = isTurnOn;
             }
-            
+
             Context.SaveChanges();
 
             return new HttpResponseMessage(HttpStatusCode.Created);

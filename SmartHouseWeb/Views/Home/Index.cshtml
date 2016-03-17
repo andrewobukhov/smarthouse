@@ -1,29 +1,30 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿<link href="~/Content/angular-chart.css" rel="stylesheet" />
 
 
-<link href="~/Content/angular-chart.css" rel="stylesheet" />
-
-
-<div>
-    <div ng-app="app" class="row">
-
-        <div ng-controller="tempController">
-            <div>
-                <div>
-                    <label>Temp: {{lastTemp.Value}}</label>
-                </div>
-                <div>
-                    <label>Date: {{lastTemp.Date.toLocaleTimeString()}}</label>
-                </div>
-            </div>
-
-            <div>
-                <canvas id="line" class="chart chart-line" chart-data="data" chart-options="options"
-                        chart-labels="labels" chart-legend="true" chart-series="series"></canvas>
-            </div>
-        </div>
+<div class="row">
+    <div class="col-md-4" ng-controller="SensorController as ctrl">
+        <p>
+            <ul class="list-group">
+                <li ng-repeat="state in ctrl.states" class="list-group-item">
+                    <label>{{state.Name}}: </label>
+                    <span>{{state.Value}}</span>
+                </li>
+            </ul>
+        </p>
+    </div>
+    <div class="col-md-8" ng-controller="SocketController as ctrl">
+        <p>
+            <ul class="list-group pull-left">
+                <li ng-repeat="state in ctrl.states" class="list-group-item">
+                    <label>{{state.Name}}: </label>
+                    <button type="button" class="btn btn-success btn-sm"
+                            ng-class="{'btn-success': !state.IsTurnOn, 'btn-danger': state.IsTurnOn}"
+                            ng-click="ctrl.turnOn(state.Index)">
+                        Turn On
+                    </button>
+                </li>
+            </ul>
+        </p>
     </div>
 </div>
+

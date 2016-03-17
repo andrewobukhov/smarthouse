@@ -39,6 +39,12 @@ namespace SmartHouseWeb
             );
 
             config.Routes.MapHttpRoute(
+                name: "SocketStates",
+                routeTemplate: "api/socket/states",
+                defaults: new { controller = "Socket", action = "GetAllStates" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "SocketState",
                 routeTemplate: "api/socket/{index}",
                 defaults: new { controller = "Socket", action = "GetState" }

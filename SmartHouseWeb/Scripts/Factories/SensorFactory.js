@@ -9,11 +9,23 @@
 
     function SensorFactory($http) {
         var service = {
-            getData: getData
+            getStates: getStates
         };
 
         return service;
 
-        function getData() { }
+        function getStates() {
+            return $http.get('/api/sensor/states')
+               .then(getStatesComplete)
+               .catch(getStatesFailed);
+
+            function getStatesComplete(response) {
+                return response.data;
+            }
+
+            function getStatesFailed(error) {
+                console.error('XHR Failed for getStates.' + error.data);
+            }
+        }
     }
 })();

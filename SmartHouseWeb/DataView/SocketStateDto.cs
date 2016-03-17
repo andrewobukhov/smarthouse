@@ -7,6 +7,10 @@ namespace SmartHouseWeb.DataView
 {
     public class SocketStateDto
     {
+        public string Name { get; set; }
+
         public bool IsTurnOn { get; set; }
+
+        public int Index { get; set; }
     }
 }

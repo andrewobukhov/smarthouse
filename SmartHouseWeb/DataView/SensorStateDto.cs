@@ -5,7 +5,7 @@ namespace SmartHouseWeb.DataView
 {
     public class SensorStateDto
     {
-        public string SensorName { get; set; }
+        public string Name { get; set; }
 
         public int Value { get; set; }
 
@@ -17,7 +17,7 @@ namespace SmartHouseWeb.DataView
 
         public SensorStateDto(SensorState state)
         {
-            SensorName = state.Sensor.Name;
+            Name = state.Sensor.Name;
             Value = state.Value;
             Date = state.UpdateTime.ToUnixTimestamp();
         }

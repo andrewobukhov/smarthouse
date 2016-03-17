@@ -406,6 +406,8 @@
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\appOld.js" />
     <Content Include="Scripts\Controllers\SensorController.js" />
+    <Content Include="Scripts\Controllers\SocketController.js" />
+    <Content Include="Scripts\Factories\SocketFactory.js" />
     <Content Include="Scripts\Factories\SensorFactory.js" />
     <Content Include="Web.config" />
   </ItemGroup>

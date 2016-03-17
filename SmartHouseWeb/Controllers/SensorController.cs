@@ -23,14 +23,14 @@ namespace SmartHouseWeb.Controllers
             {
                 dtos.Add(new SensorStatisticDto(temperature));
             }
-            
+
             return dtos;
         }
 
         public IEnumerable<SensorStateDto> GetAllStates()
         {
             var list = new List<SensorStateDto>();
-            foreach(var item in Context.SensorStates.Include("Sensor"))
+            foreach (var item in Context.SensorStates.Include("Sensor"))
             {
                 list.Add(new SensorStateDto(item));
             }
@@ -55,11 +55,16 @@ namespace SmartHouseWeb.Controllers
             var sensor = Context.Sensors.First(x => x.SensorIndex == (SensorIndex)index);
             if (sensor != null)
             {
-                var lastSteta = Context.SensorStates.FirstOrDefault(x => x.Sensor.SensorIndex == (SensorIndex) index);
+                var lastSteta = Context.SensorStates.FirstOrDefault(x => x.Sensor.SensorIndex == (SensorIndex)index);
 
                 if (lastSteta == null)
                 {
-                    Context.SensorStates.Add(new SensorState {Sensor = sensor, Value = value});
+                    Context.SensorStates.Add(new SensorState
+                    {
+                        Sensor = sensor,
+                        Value = value,
+                        UpdateTime = DateTime.Now
+                    });
                 }
                 else
                 {
