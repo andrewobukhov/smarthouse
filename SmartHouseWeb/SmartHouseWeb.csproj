@@ -283,6 +283,8 @@
     <Content Include="Content\bower_components\jquery\src\var\support.js" />
     <Content Include="Content\bower_components\jquery\src\var\toString.js" />
     <Content Include="Content\bower_components\jquery\src\wrap.js" />
+    <Content Include="Content\bower_components\underscore\underscore-min.js" />
+    <Content Include="Content\bower_components\underscore\underscore.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\bower.json" />
@@ -409,6 +411,7 @@
     <Content Include="Scripts\Controllers\SocketController.js" />
     <Content Include="Scripts\Factories\SocketFactory.js" />
     <Content Include="Scripts\Factories\SensorFactory.js" />
+    <Content Include="Scripts\Modules\underscore.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -459,6 +462,11 @@
     <Content Include="Content\bower_components\d3\CONTRIBUTING.md" />
     <Content Include="Content\bower_components\d3\LICENSE" />
     <Content Include="Content\bower_components\d3\README.md" />
+    <Content Include="Content\bower_components\underscore\.bower.json" />
+    <Content Include="Content\bower_components\underscore\bower.json" />
+    <Content Include="Content\bower_components\underscore\LICENSE" />
+    <Content Include="Content\bower_components\underscore\README.md" />
+    <Content Include="Content\bower_components\underscore\underscore-min.map" />
     <None Include="Properties\PublishProfiles\FTP.pubxml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
