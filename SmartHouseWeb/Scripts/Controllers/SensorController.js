@@ -12,9 +12,6 @@
         var vm = this;
         vm.states = [];
 
-        vm.turnOn = turnOn;
-
-
         activate();
 
         function activate() {
@@ -23,9 +20,5 @@
                     vm.states = data;
                 });
         }
-
-        function turnOn() {
-            alert("Cool");
-        };
     }
 })();

@@ -42,6 +42,5 @@
   },
   "_source": "git://github.com/GraFiddle/angular-chart.git",
   "_target": "^0.4.0",
-  "_originalSource": "angular-chart",
-  "_direct": true
+  "_originalSource": "angular-chart"
 }

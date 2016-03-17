@@ -10,7 +10,7 @@
     function SocketController(SocketFactory, _) {
         /* jshint validthis:true */
         var vm = this;
-        vm.turnOn = turnOn;
+        vm.changeState = changeState;
 
         activate();
 
@@ -20,9 +20,12 @@
             });
         }
 
-        function turnOn(index) {
-            var state = _.find(vm.states, function(s) { return s.Index === index; });
-            state.IsTurnOn = !state.IsTurnOn;
+        function changeState(index) {
+            SocketFactory.changeState(index).then(function (data) {
+                var state = _.find(vm.states, function (s) { return s.Index === index; });
+                state.IsTurnOn = data.IsTurnOn;
+                state.StateName = data.StateName;
+            });
         }
     }
 })();

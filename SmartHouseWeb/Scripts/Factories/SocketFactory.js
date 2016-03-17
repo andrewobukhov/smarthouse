@@ -9,7 +9,8 @@
 
     function SocketFactory($http) {
         var service = {
-            getStates: getStates
+            getStates: getStates,
+            changeState: changeState
         };
 
         return service;
@@ -27,6 +28,25 @@
             function getStatesFailed()
             {
                 console.error('XHR Failed for getStates.' + error.data);
+            }
+        }
+
+        function changeState(index) {
+
+            var data = {
+                Index: index
+            };
+
+            return $http.post("/api/socket/change", data)
+                .then(postComplete)
+                .catch(postFailed);
+
+            function postComplete(response) {
+                return response.data;
+            }
+
+            function postFailed() {
+                console.error('XHR Failed: ' + error.data);
             }
         }
     }

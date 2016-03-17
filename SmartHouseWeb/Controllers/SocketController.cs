@@ -24,32 +24,28 @@ namespace SmartHouseWeb.Controllers
 
         public IEnumerable<SocketStateDto> GetAllStates()
         {
-            var list = Context.SocketStates.Select(item => new SocketStateDto()
+            var list = new List<SocketStateDto>();
+            foreach (var item in Context.SocketStates)
             {
-                Name = "Розетка",
-                IsTurnOn = item.IsTurnOn,
-                Index = (int) item.SocketIndex
-            });
+                list.Add(new SocketStateDto(item));
+            }
             return list;
         }
 
-        [System.Web.Http.HttpGet]
-        public HttpResponseMessage SetState(int index, bool isTurnOn)
+        [HttpPost]
+        public SocketStateDto ChangeState([FromBody]SocketStateDto socketStateDto)
         {
-            var state = Context.SocketStates.FirstOrDefault(x => x.SocketIndex == (SocketIndex)index);
+            var state = Context.SocketStates.FirstOrDefault(x => x.SocketIndex == (SocketIndex)socketStateDto.Index);
 
-            if (state == null)
+            if (state != null)
             {
-                Context.SocketStates.Add(new SocketState { SocketIndex = (SocketIndex)index, IsTurnOn = isTurnOn });
-            }
-            else
-            {
-                state.IsTurnOn = isTurnOn;
+                state.IsTurnOn = !state.IsTurnOn;
+                Context.SaveChanges();
+
+                return new SocketStateDto(state);
             }
 
-            Context.SaveChanges();
-
-            return new HttpResponseMessage(HttpStatusCode.Created);
+            throw new HttpResponseException(HttpStatusCode.NotFound);
         }
     }
 }

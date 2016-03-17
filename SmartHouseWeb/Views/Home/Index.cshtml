@@ -6,8 +6,8 @@
         <p>
             <ul class="list-group">
                 <li ng-repeat="state in ctrl.states" class="list-group-item">
-                    <label>{{state.Name}}: </label>
-                    <span>{{state.Value}}</span>
+                    <h5>{{state.Name}}: <span class="label label-success">{{state.Value}}</span></h5>
+
                 </li>
             </ul>
         </p>
@@ -19,12 +19,18 @@
                     <label>{{state.Name}}: </label>
                     <button type="button" class="btn btn-success btn-sm"
                             ng-class="{'btn-success': !state.IsTurnOn, 'btn-danger': state.IsTurnOn}"
-                            ng-click="ctrl.turnOn(state.Index)">
-                        Turn On
+                            ng-click="ctrl.changeState(state.Index)">
+                        {{state.StateName}}
                     </button>
                 </li>
             </ul>
         </p>
     </div>
+</div>
+
+<div class="row">
+    <div ui-view></div>
+    <a ui-sref="state1">State 1</a>
+    <a ui-sref="state2">State 2</a>
 </div>
 
