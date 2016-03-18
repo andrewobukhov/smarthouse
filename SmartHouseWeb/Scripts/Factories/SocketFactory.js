@@ -10,10 +10,26 @@
     function SocketFactory($http) {
         var service = {
             getStates: getStates,
-            changeState: changeState
+            changeState: changeState,
+            getInterval: getInterval
         };
 
         return service;
+
+        function getInterval(date) {
+            var msDiff = Date.now() - date;
+            var secDiff = Math.floor(msDiff / 1000);
+            var minDiff = Math.floor(msDiff / 60000);
+            var hDiff = Math.floor(msDiff / 3600000);
+
+            var result = "";
+
+            hDiff && (result = result.concat(hDiff + " ч. "));
+            minDiff && (result = result.concat((minDiff % 60) + " м. "));
+            result = result.concat((secDiff % 60) + " с. ");
+
+            return result;
+        }
 
         function getStates() {
             return $http.get("/api/socket/states")

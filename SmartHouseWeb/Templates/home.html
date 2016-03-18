@@ -4,7 +4,7 @@
             <ul class="list-group">
                 <li ng-repeat="state in ctrl.states" class="list-group-item">
                     <h5>{{state.Name}}: <span class="label label-success">{{state.Value}}</span></h5>
-
+                    <h6>Последнее обновление: {{state.Date}}</h6>
                 </li>
             </ul>
         </p>
@@ -19,6 +19,7 @@
                             ng-click="ctrl.changeState(state.Index)">
                         {{state.StateName}}
                     </button>
+                    <h6>{{state.status}}</h6>
                 </li>
             </ul>
         </p>

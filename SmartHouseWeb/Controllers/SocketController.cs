@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -40,6 +41,7 @@ namespace SmartHouseWeb.Controllers
             if (state != null)
             {
                 state.IsTurnOn = !state.IsTurnOn;
+                state.UpdateDate = DateTime.Now;
                 Context.SaveChanges();
 
                 return new SocketStateDto(state);

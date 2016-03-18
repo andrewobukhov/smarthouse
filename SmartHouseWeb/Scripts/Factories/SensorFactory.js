@@ -5,9 +5,9 @@
         .module('app')
         .factory('SensorFactory', SensorFactory);
 
-    SensorFactory.$inject = ['$http'];
+    SensorFactory.$inject = ['$http', '_'];
 
-    function SensorFactory($http) {
+    function SensorFactory($http, _) {
         var service = {
             getStates: getStates
         };
@@ -20,6 +20,9 @@
                .catch(getStatesFailed);
 
             function getStatesComplete(response) {
+               _.forEach(response.data, function(x) {
+                    x.Date = new Date(x.Date).toLocaleTimeString();
+                });
                 return response.data;
             }
 

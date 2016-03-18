@@ -12,5 +12,7 @@ namespace SmartHouseWeb.Models
         public SocketIndex SocketIndex { get; set; }
 
         public bool IsTurnOn { get; set; }
+
+        public DateTime UpdateDate { get; set; }
     }
 }

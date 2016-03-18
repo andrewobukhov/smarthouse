@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using SmartHouseWeb.Models;
+using SmartHouseWeb.Services;
 
 namespace SmartHouseWeb.DataView
 {
@@ -16,6 +17,8 @@ namespace SmartHouseWeb.DataView
 
         public string StateName { get; set; }
 
+        public long Date { get; set; }
+
         public SocketStateDto()
         { }
 
@@ -25,6 +28,7 @@ namespace SmartHouseWeb.DataView
             IsTurnOn = state.IsTurnOn;
             Index = (int)state.SocketIndex;
             StateName = IsTurnOn ? "Turn off" : "Turn on";
+            Date = state.UpdateDate.ToUnixTimestamp();
         }
     }
 }
