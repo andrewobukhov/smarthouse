@@ -20,26 +20,27 @@
             <h3 class="text-muted">Smart House</h3>
             <nav>
                 <ul class="nav nav-justified">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Boiler room</a></li>
-                    <li><a href="#">Bath-House</a></li>
+                    <li ui-sref-active="active"><a ui-sref="home">Home</a></li>
+                    <li ui-sref-active="active"><a ui-sref="boiler">Boiler room</a></li>
+                    <li ui-sref-active="active"><a ui-sref="bath">Bath-House</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" ui-view>
         @RenderBody()
     </div>
 
     <script src="~/Content/bower_components/angular/angular.js"></script>
+
     <script src="~/Content/bower_components/underscore/underscore.js"></script>
     <script src="~/Content/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-    @*<script src="~/Content/bower_components/angular-chart/angular-chart.js"></script>*@
-
     <script src="~/Scripts/Modules/underscore.js"></script>
     <script src="~/Scripts/app.js"></script>
+
+    <script src="~/Scripts/Configs/router.config.js"></script>
 
     <script src="~/Scripts/Factories/SensorFactory.js"></script>
     <script src="~/Scripts/Controllers/SensorController.js"></script>
